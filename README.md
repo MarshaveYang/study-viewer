@@ -1,4 +1,4 @@
-# Obsidian 笔记阅读器（obsidian.dumm.top）
+# Obsidian 笔记阅读器（study.dumm.top）
 
 一个只读的手机友好 Obsidian 仓库阅读器：浏览笔记、调节字号/背景，查看双链关系图谱。
 新增笔记的方式：直接在 GitHub 网页上把 Obsidian 文件夹拖进去上传即可，本工具会实时读取最新内容。
@@ -59,10 +59,10 @@
 
 ## 第六步：绑定自定义域名
 
-1. 该 Pages 项目 → **Custom domains** → **设置自定义域名** → 输入 `obsidian.dumm.top`。
+1. 该 Pages 项目 → **Custom domains** → **设置自定义域名** → 输入 `study.dumm.top`。
 2. 因为 `dumm.top` 已经在你的 Cloudflare 账号下，一般会自动帮你加好 DNS 记录，几分钟内生效。
 
-完成后访问 `https://obsidian.dumm.top` 即可。
+完成后访问 `https://study.dumm.top` 即可。
 
 ---
 
