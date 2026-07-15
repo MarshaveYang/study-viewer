@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>笔记 · 阅读器</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 顶部工具栏 -->
+  <header id="topbar">
+    <button id="btn-menu" class="icon-btn" aria-label="目录">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <div id="doc-title">选择一篇笔记</div>
+    <div id="topbar-actions">
+      <button id="btn-refresh" class="icon-btn" aria-label="刷新" title="刷新">
+        <svg viewBox="0 0 24 24"><path d="M4 4v6h6M20 20v-6h-6M5.5 9a7 7 0 0 1 12-3.5L20 8M18.5 15a7 7 0 0 1-12 3.5L4 16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button id="btn-graph" class="icon-btn" aria-label="关系图谱" title="关系图谱">
+        <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.3" fill="currentColor"/><circle cx="18" cy="7" r="2.3" fill="currentColor"/><circle cx="9" cy="18" r="2.3" fill="currentColor"/><circle cx="18" cy="17" r="2.3" fill="currentColor"/><path d="M8 7l8 -0.6M7.5 8L9 16M11 17.5l6-1" stroke="currentColor" stroke-width="1.1" fill="none"/></svg>
+      </button>
+      <button id="btn-settings" class="icon-btn" aria-label="显示设置" title="显示设置">
+        <svg viewBox="0 0 24 24"><text x="4" y="18" font-size="15" font-family="serif" fill="currentColor">Aa</text></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="layout">
+    <!-- 侧边栏：文件目录 -->
+    <aside id="sidebar">
+      <div id="search-wrap">
+        <input id="search-input" type="search" placeholder="搜索笔记…" autocomplete="off" />
+      </div>
+      <div id="file-tree"></div>
+      <div id="sidebar-status" class="muted"></div>
+    </aside>
+    <div id="sidebar-backdrop"></div>
+
+    <!-- 正文阅读区 -->
+    <main id="reader">
+      <article id="note-content" class="note-content">
+        <div id="welcome">
+          <h1>欢迎</h1>
+          <p>点击左上角目录图标，选择一篇笔记开始阅读。也可以点击右上角图标查看关系图谱。</p>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- 显示设置面板 -->
+  <div id="settings-panel" class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>显示设置</h3>
+    <div class="setting-row">
+      <label>字号</label>
+      <input id="font-size-range" type="range" min="14" max="24" step="1" />
+      <span id="font-size-value"></span>
+    </div>
+    <div class="setting-row">
+      <label>版面宽度</label>
+      <input id="width-range" type="range" min="480" max="900" step="20" />
+      <span id="width-value"></span>
+    </div>
+    <div class="setting-row">
+      <label>背景</label>
+      <div id="theme-swatches">
+        <button data-theme="paper" class="swatch swatch-paper">纸白</button>
+        <button data-theme="sepia" class="swatch swatch-sepia">护眼</button>
+        <button data-theme="dark" class="swatch swatch-dark">深色</button>
+      </div>
+    </div>
+    <button id="btn-close-settings" class="close-sheet">完成</button>
+  </div>
+
+  <!-- 关系图谱 -->
+  <div id="graph-overlay">
+    <div id="graph-topbar">
+      <button id="btn-close-graph" class="icon-btn" aria-label="关闭图谱">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      </button>
+      <div id="graph-status" class="muted">正在构建关系图谱…</div>
+      <div class="graph-zoom-controls">
+        <button id="btn-zoom-in" class="icon-btn">+</button>
+        <button id="btn-zoom-out" class="icon-btn">−</button>
+        <button id="btn-zoom-reset" class="icon-btn">⤢</button>
+      </div>
+    </div>
+    <svg id="graph-svg"></svg>
+    <div id="graph-tooltip">
+      <span id="graph-tooltip-name"></span>
+      <button id="graph-tooltip-open">打开笔记 →</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
