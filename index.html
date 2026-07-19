@@ -14,6 +14,7 @@
       <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
     </button>
     <div id="doc-title">选择一篇笔记</div>
+    <span id="offline-badge">离线</span>
     <div id="topbar-actions">
       <button id="btn-refresh" class="icon-btn" aria-label="刷新" title="刷新">
         <svg viewBox="0 0 24 24"><path d="M4 4v6h6M20 20v-6h-6M5.5 9a7 7 0 0 1 12-3.5L20 8M18.5 15a7 7 0 0 1-12 3.5L4 16" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -34,7 +35,11 @@
         <input id="search-input" type="search" placeholder="搜索笔记…" autocomplete="off" />
       </div>
       <div id="file-tree"></div>
-      <div id="sidebar-status" class="muted"></div>
+      <div id="sidebar-footer">
+        <div id="sidebar-status" class="muted"></div>
+        <button id="btn-sync-all" class="sync-btn" disabled>缓存当前仓库（离线阅读）</button>
+        <div id="sync-status" class="muted"></div>
+      </div>
     </aside>
     <div id="sidebar-backdrop"></div>
 
@@ -80,7 +85,7 @@
       <button id="btn-close-graph" class="icon-btn" aria-label="关闭图谱">
         <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
       </button>
-      <div id="graph-status" class="muted">正在构建关系图谱…</div>
+      <div id="graph-status" class="muted"></div>
       <div class="graph-zoom-controls">
         <button id="btn-zoom-in" class="icon-btn">+</button>
         <button id="btn-zoom-out" class="icon-btn">−</button>
@@ -88,6 +93,9 @@
       </div>
     </div>
     <svg id="graph-svg"></svg>
+    <div id="graph-empty">
+      <p>请先打开一篇笔记，再查看它所在仓库的关系图谱</p>
+    </div>
     <div id="graph-tooltip">
       <span id="graph-tooltip-name"></span>
       <button id="graph-tooltip-open">打开笔记 →</button>

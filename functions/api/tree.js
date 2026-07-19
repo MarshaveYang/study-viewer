@@ -41,7 +41,7 @@ export async function onRequestGet(context) {
       .filter((item) => item.type === 'blob')
       .map((item) => ({ path: item.path, sha: item.sha }));
 
-    return json({ version: commitSha, files });
+    return json({ version: commitSha, repo: `${owner}/${repo}`, files });
   } catch (err) {
     return json({ error: String(err) }, 500);
   }

@@ -65,6 +65,12 @@ input[type="search"], input[type="range"] { font: inherit; }
 .icon-btn:hover { background: var(--accent-soft); }
 .icon-btn svg { width: 20px; height: 20px; }
 
+#offline-badge {
+  display: none; flex-shrink: 0; font-size: 11px; padding: 3px 9px; border-radius: 20px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+#offline-badge.show { display: inline-block; }
+
 /* ============ 布局 ============ */
 #layout { display: flex; height: calc(100% - 52px); }
 
@@ -87,6 +93,10 @@ body.sidebar-open #sidebar { transform: translateX(0); }
   background: rgba(0,0,0,.35);
 }
 body.sidebar-open #sidebar-backdrop { display: block; }
+
+#folder-cached-tag {
+  margin-left: 6px; font-size: 11px; font-weight: 600; color: var(--accent);
+}
 
 #search-wrap { margin-bottom: 8px; }
 #search-input {
@@ -114,7 +124,19 @@ body.sidebar-open #sidebar-backdrop { display: block; }
 .file-item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
 
 .muted { color: var(--muted); font-size: 12px; }
-#sidebar-status { padding: 8px 4px; }
+#sidebar-status { padding: 8px 4px 0; }
+
+#sidebar-footer {
+  margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.sync-btn {
+  padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px;
+  font-size: 13px; background: var(--bg); color: var(--text); text-align: center;
+}
+.sync-btn:hover:not(:disabled) { background: var(--accent-soft); }
+.sync-btn:disabled { opacity: .5; cursor: not-allowed; }
+#sync-status { padding: 0 2px; }
 
 /* ============ 正文 ============ */
 #reader { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
@@ -214,6 +236,11 @@ body.graph-open #graph-overlay { display: flex; }
 #graph-svg .link.highlight { stroke: var(--accent); stroke-opacity: .9; }
 #graph-svg .node-label { fill: var(--text); font-size: 10px; pointer-events: none; font-family: -apple-system, sans-serif; }
 #graph-svg .node-label.dim { opacity: .15; }
+
+#graph-empty {
+  display: none; flex: 1; align-items: center; justify-content: center; flex-direction: column;
+  color: var(--muted); text-align: center; padding: 0 30px; font-size: 14px;
+}
 
 #graph-tooltip {
   position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 140%);
